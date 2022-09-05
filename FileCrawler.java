@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FileCrawler {
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
-        System.out.println("Enter a word to search for");
+        System.out.println("Enter a search word");
         String input = inputScanner.nextLine();
         readFiles(System.getProperty("user.dir"), input);
         inputScanner.close();
