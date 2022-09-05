@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -13,13 +12,12 @@ public class FileCrawler {
     }
 
     private static void readFiles(String Filepath, String input) {
-        
             File currentDirectory = new File(Filepath);
             File[] files = currentDirectory.listFiles();
             Scanner scanner = null; 
             for (File file : files) {
                 if(file.isDirectory()) {
-                    readFiles(currentDirectory + file.toString(), input);
+                    readFiles(file.toString(), input);
                 } else {
                     try {
                     scanner = new Scanner(file);
