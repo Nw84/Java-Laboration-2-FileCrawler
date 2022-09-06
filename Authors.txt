@@ -1,1 +1,6 @@
-Tobias Nordwall
+Laboration 2: File Crawler 
+
+Created by Tobias Nordwall
+
+The goal of the exercise was to familiarize yourself with how java handles streams (input/output), files, simple error handling
+(exceptions) and recursion.

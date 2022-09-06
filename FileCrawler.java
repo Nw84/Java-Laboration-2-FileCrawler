@@ -1,7 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
 
-
 public class FileCrawler {
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
@@ -20,14 +19,18 @@ public class FileCrawler {
                     readFiles(file.toString(), input);
                 } else {
                     try {
-                    scanner = new Scanner(file);
-                    String string = scanner.nextLine();
-                    if(string.toLowerCase().contains(input.toLowerCase())) {
-                        System.out.println("\nString found in : " + file.getAbsolutePath());
-                    }
-                } catch(Exception e) {
+                        scanner = new Scanner(file);
+                        while(scanner.hasNext()) {
+                        String string = scanner.nextLine();
+                        if(string.toLowerCase().contains(input.toLowerCase())) {
+                            System.out.println("\nString found in : " + file.getAbsolutePath());
+                        }
+                    } 
+                
+                } catch(Exception ex) {
                     System.err.println("\nFile or directory could not be read at : " + file.getAbsolutePath());
-                } 
+                }
+            
             } 
         }
 
