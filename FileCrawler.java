@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FileCrawler {
@@ -20,19 +21,24 @@ public class FileCrawler {
                 } else {
                     try {
                         scanner = new Scanner(file);
+                        if(scanner.ioException() == null) {
+                            System.err.println("\nFile or directory could not be read at : " + file.getAbsolutePath()); 
+                        }
                         while(scanner.hasNext()) {
                         String string = scanner.nextLine();
+                        
                         if(string.toLowerCase().contains(input.toLowerCase())) {
                             System.out.println("\nString found in : " + file.getAbsolutePath());
                         }
+                        
                     } 
                 
+                } catch(FileNotFoundException f) {
+                    System.err.print("File not found");
                 } catch(Exception ex) {
                     System.err.println("\nFile or directory could not be read at : " + file.getAbsolutePath());
-                }
-            
+                } 
             } 
-        }
-
+        } 
     }
 }
