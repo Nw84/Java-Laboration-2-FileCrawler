@@ -16,17 +16,19 @@ public class FileCrawler {
             File[] files = currentDirectory.listFiles();
             Scanner scanner = null; 
             for (File file : files) {
+                
                 if(file.isDirectory()) {
                     readFiles(file.toString(), input);
                 } else {
                     try {
                         scanner = new Scanner(file);
-                        if(scanner.ioException() == null) {
-                            System.err.println("\nFile or directory could not be read at : " + file.getAbsolutePath()); 
+                        if(!file.canRead()){
+                            System.err.println("\nFile or directory could not be read at : " + file.getAbsolutePath());
                         }
+                        
+                        
                         while(scanner.hasNext()) {
                         String string = scanner.nextLine();
-                        
                         if(string.toLowerCase().contains(input.toLowerCase())) {
                             System.out.println("\nString found in : " + file.getAbsolutePath());
                         }
@@ -34,7 +36,7 @@ public class FileCrawler {
                     } 
                 
                 } catch(FileNotFoundException f) {
-                    System.err.print("File not found");
+                    System.err.println("File is not found");
                 } catch(Exception ex) {
                     System.err.println("\nFile or directory could not be read at : " + file.getAbsolutePath());
                 } 
